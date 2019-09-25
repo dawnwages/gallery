@@ -41,6 +41,15 @@
             </br>---------------------- </br> </br>
             {{ object.id }}
             {{ object.title }}
+            {{ object.description }}
+            {% if object.url_l %}
+                {{ object.url_l }}
+            {% elif object.url_m %}
+                {{ object.url_m }}
+            {% else %}
+                THIRD LEVEL IMAGE
+            {% endif %}
+
             </br>---------------------- </br> </br>
             {% endfor %}
 
