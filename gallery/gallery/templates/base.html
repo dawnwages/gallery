@@ -1,0 +1,92 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}">
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <script type="text/javascript">
+        const message = 'hello';
+        const gallery_dic = '{{ gallery_dic }}';
+        const first_image_gallery_id = '{{ first_image_gallery_id }}';
+    </script>
+    <body class="{% block body_class %}{% endblock %}">
+
+        <h1>ITHAKA GALLERY</h1>
+
+        <div id="app">
+
+        {% for object in gallery_dic %}
+            {{ object }}
+            </br>---------------------- </br> </br>
+            {{ object.id }}
+            {{ object.title }}
+            </br>---------------------- </br> </br>
+            {% endfor %}
+
+            <!-- I don't think this is what I want because it only gives me all of the values -->
+        {% for object in gallery_dic %}
+            <!-- only return cdn images -->
+            {% if 'c1' in object %}
+                {{ object }}
+            {% endif %}
+        {% endfor %}
+
+
+
+        </div>
+
+        {% wagtailuserbar %}
+
+        {% block content %}{% endblock %}
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/gallery.js' %}"></script>
+
+
+        {% block extra_js %}
+        <script>
+            const app = new Vue({
+                delimiters: [' [[', ']]'],
+                el: '#app',
+                data() {
+                    return {
+                        message: 'Hello',
+                        things: things,
+                        images: images,
+                        imageid: imageid,
+                        gallery_dic: gallery_dic,
+                    }
+                },
+
+                methods: {
+                    greet: function(name) {
+                        console.log('Hello from dawn !')
+                    }
+                }
+            });
+        </script>
+        {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>
