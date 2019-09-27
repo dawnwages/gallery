@@ -1,0 +1,34 @@
+.gallery-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.gallery-row {
+
+}
+
+.right-desc {
+  border: 1px black solid;
+  padding: 50px;
+  margin-left: 20px;
+}
+
+.img {
+  max-width: 125px;
+  max-height: 125px;
+  /*padding: 10px;*/
+  margin-left:auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.gallery-img {
+  width: 100px;
+  max-height: 100px;
+}
+
+.tooltip-inner {
+  display: none;
+}

@@ -19,6 +19,7 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -26,44 +27,44 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
     <script type="text/javascript">
-        const message = 'hello';
         const gallery_dic = '{{ gallery_dic }}';
-        const first_image_gallery_id = '{{ first_image_gallery_id }}';
+        const image_gallery = '{{ image_gallery}}';
     </script>
     <body class="{% block body_class %}{% endblock %}">
 
+    <div id="app">
         <h1>ITHAKA GALLERY</h1>
+        <div class="container">
 
-        <div id="app">
+            <div class="container-fluid">
+            <div class="gallery-wrapper">
+                <div class="left-gallery">
+                    <div class="row gallery-row">
+                        {% for image in gallery_dic %}
 
-        {% for object in gallery_dic %}
-            {{ object }}
-            </br>---------------------- </br> </br>
-            {{ object.id }}
-            {{ object.title }}
-            {{ object.description }}
-            {% if object.url_l %}
-                {{ object.url_l }}
-            {% elif object.url_m %}
-                {{ object.url_m }}
-            {% else %}
-                THIRD LEVEL IMAGE
-            {% endif %}
+                        <div class="img">
+                            <img src="{% if image.url_l %}
+                                    {{ image.url_l }}
+                                {% elif image.url_m %}
+                                    {{ image.url_m }}
+                                {% elif image.url_n %}
+                                    {{ image.url_n }}
+                                {% endif %}"
+                                 class="gallery-img">
+                        </div>
 
-            </br>---------------------- </br> </br>
-            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="right-desc">
 
-            <!-- I don't think this is what I want because it only gives me all of the values -->
-        {% for object in gallery_dic %}
-            <!-- only return cdn images -->
-            {% if 'c1' in object %}
-                {{ object }}
-            {% endif %}
-        {% endfor %}
-
-
-
+                </div>
+            </div>
+            </div>
         </div>
+    </div>
+
+
 
         {% wagtailuserbar %}
 
@@ -81,18 +82,23 @@
                 data() {
                     return {
                         message: 'Hello',
-                        things: things,
-                        images: images,
-                        imageid: imageid,
+                          images: [
+                            'https://dummyimage.com/800/ffffff/000000',
+                            'https://dummyimage.com/1600/ffffff/000000',
+                            'https://dummyimage.com/1280/000000/ffffff',
+                            'https://dummyimage.com/400/000000/ffffff'
+                          ],
                         gallery_dic: gallery_dic,
+                        index: null,
+                        image_gallery: image_gallery,
                     }
                 },
-
                 methods: {
                     greet: function(name) {
                         console.log('Hello from dawn !')
                     }
-                }
+                },
+
             });
         </script>
         {# Override this in templates to add extra javascript #}
