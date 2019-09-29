@@ -1,11 +1,32 @@
+.title {
+  margin: auto;
+}
+
+input {
+  margin: 50px auto 100px auto;
+}
+
+.search-row {
+  margin: auto;
+}
+
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
 .gallery-wrapper {
-  display: grid;
+/*  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
+  grid-gap: 10px; */
 }
 
 .gallery-row {
-
+  width: 40%;
+  margin: auto;
 }
 
 .right-desc {

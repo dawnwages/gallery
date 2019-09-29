@@ -18,8 +18,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -33,15 +33,31 @@
     <body class="{% block body_class %}{% endblock %}">
 
     <div id="app">
-        <h1>ITHAKA GALLERY</h1>
-        <div class="container">
+        <div class="container col-sm-12">
+        <div class="row">
+            <h1 class="title">ITHAKA GALLERY</h1>
+        </div>
+        <div class="row">
+            <h5 class="subtitle title">Take Home Assignment</h5>
+        </div>
+        <div class="row">
+            <p class="desc title">Ipsum delorum text</p>
+        </div>
+        <div class="row">
+            <div class="search-row">
+                <input type="text"
+                        placeholder="search images">
+
+                <button> Search </button>
+            </div>
+        </div>
+
 
             <div class="container-fluid">
             <div class="gallery-wrapper">
                 <div class="left-gallery">
                     <div class="row gallery-row">
-                        {% for image in gallery_dic %}
-
+                        {% for image in gallery_list %}
                         <div class="img">
                             <img src="{% if image.url_l %}
                                     {{ image.url_l }}
@@ -52,13 +68,29 @@
                                 {% endif %}"
                                  class="gallery-img">
                         </div>
-
                         {% endfor %}
+
                     </div>
-                </div>
-                <div class="right-desc">
 
                 </div>
+
+                <div class="pagination">
+                        <span class="step-links">
+                            {% if gallery_list.has_previous %}
+                                <a href="?page=1">&laquo; first</a>
+                                <a href="?page={{
+                                gallery_list.previous_page_number }}">previous</a>
+                            {% endif %}
+                            <span class="current">
+                                Page {{ gallery_list.number }} of {{ gallery_list.paginator.num_pages }}
+                            </span>
+                            {% if gallery_list.has_next %}
+                                <a href="?page={{ gallery_list.next_page_number }}">next </a>
+                                <a href="?page={{ gallery_list.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                </div>
+
             </div>
             </div>
         </div>
