@@ -8,7 +8,7 @@ I know I should wireframe first but its such a simple app, I'm going to start wi
 - description has an object with it's content name has a leading underscore so a custom filter is now necessary in order to display.
 - (TODO) Some of the images return with 404 errors, its needed to return a default image if there's an error.
 - (TODO) characters in the description need to add escape strings for rendering character texts
-- (TODO) 
+- (TODO) The search could happen with django filtering and template tags or it could be done with django rest framework and query url, both of which feel out of scope right now for the time I have left. Since I'm more comfortable with DRF than creating custom django views and because the fields do need to be editable anyway, I'm going to move forward with getting the json data into the SQLite db.
 
 ###Additional Features
 Looking at the JSON gives me great ideas on what additional features I could add because there is more information about the origins of the dataset, but unfortunately with time as a freelancer, devoting more time this project wasn't feasible for me.
