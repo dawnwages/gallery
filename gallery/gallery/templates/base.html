@@ -29,11 +29,10 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
-        <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
     <script type="text/javascript">
-        const gallery_dic = '{{ gallery_dic }}';
-        const image_gallery = '{{ image_gallery}}';
+        const gallery_list = '{{ gallery_list }}';
     </script>
     <body class="{% block body_class %}{% endblock %}">
 
@@ -159,21 +158,13 @@
 
         {% block extra_js %}
         <script>
-        /*    const app = new Vue({
+            const app = new Vue({
                 delimiters: [' [[', ']]'],
                 el: '#app',
                 data() {
                     return {
                         message: 'Hello',
-                          images: [
-                            'https://dummyimage.com/800/ffffff/000000',
-                            'https://dummyimage.com/1600/ffffff/000000',
-                            'https://dummyimage.com/1280/000000/ffffff',
-                            'https://dummyimage.com/400/000000/ffffff'
-                          ],
-                        gallery_dic: gallery_dic,
-                        index: null,
-                        image_gallery: image_gallery,
+                        gallery_list: gallery_list,
                     }
                 },
                 methods: {
@@ -183,7 +174,6 @@
                 },
 
             });
-        */
         </script>
         {# Override this in templates to add extra javascript #}
         {% endblock %}

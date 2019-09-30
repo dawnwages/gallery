@@ -10,8 +10,6 @@ def gallery(request):
     json_data = open('data.json').read()
     json_object = json.loads(json_data)
 
-    first_image_gallery = json_object['photos']['photo'][0]
-    first_image_gallery_id = json_object['photos']['photo'][0]['id']
     image_gallery = json_object['photos']['photo']
     gallery_dic = []
 
@@ -29,9 +27,6 @@ def gallery(request):
         request,
         'base.html',
         {'image_gallery': image_gallery,
-         'gallery_dic': gallery_dic,
-         'first_image_gallery': first_image_gallery,
-         'first_image_gallery_id': first_image_gallery_id,
          'gallery_list': gallery_list,
          },
     )
