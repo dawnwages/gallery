@@ -1,5 +1,5 @@
 #GALLERY APP
-this is a proof of concept from [feature instructions](gallery/Features_README.md) describing a gallery to display from given [JSON](gallery/data.json).
+this is a proof of concept from [feature instructions](/gallery/Features_README.md) describing a gallery to display from given [JSON](/gallery/data.json).
 
 - Python
 - Django
