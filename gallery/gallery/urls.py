@@ -18,7 +18,7 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
 
-    url(r'^gallery/', views.gallery, name='gallery'),
+    url(r'^', views.gallery, name='gallery'),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
