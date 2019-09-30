@@ -79,11 +79,8 @@
                                 {% endif %}"
                                  class="gallery-img">
                             {{ image.id }}
-                       <!-- <button type="button" class="gallery-modal btn btn-primary" data-toggle="modal" data-target="#{{ image.id }}Modal">
-                            more info
-                        </button>-->
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal{{ image.id }}">
-                            Open modal
+                            more info
                           </button>
                         </div>
 
@@ -148,11 +145,6 @@
         <script type="text/javascript" src="{% static 'js/gallery.js' %}"></script>
         <script type="text/javascript">
 
-            // $(".gallery-modal").click(function(){
-            //     let fired_button = $(this).val();
-            //     alert(fired_button);
-            // })
-            //
 
         </script>
 
