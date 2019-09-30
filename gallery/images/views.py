@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from django.core.paginator import Paginator
 from django.conf import settings
 import json
@@ -18,16 +19,11 @@ def gallery(request):
         for imageobject in imagedata:
             gallery_dic.append(imageobject)
 
-
-
     get_gallery_dic(image_gallery)
-    #print('###')
-    #print(gallery_dic)
 
     paginator = Paginator(gallery_dic, 10)  # show 10 images per page
     page = request.GET.get('page')
     gallery_list = paginator.get_page(page)
-    print(gallery_list)
 
     return render(
         request,
